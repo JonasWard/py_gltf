@@ -101,8 +101,19 @@ def gltf_from_polyline(pts, h):
     return create_gltf_from_mesh(vs, tris)
 
 
+def gltf_from_polylines(ptss, hs):
+    vss, triss = [], []
+
+    for i, pts in enumerate(ptss):
+        loc_vs, loc_tris = mesh_from_pts(pts, hs[i])
+
+        vss.append(loc_vs)
+        triss.append(loc_tris)
+
+
 def new_gltf():
     return pygltflib.GLTF2()
+
 
 
 if __name__ == "__main__":
